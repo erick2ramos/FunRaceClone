@@ -6,18 +6,23 @@ namespace GameMechanics
 {
     public class PlayerController : InputListener
     {
-        PlayerConfig _playerConfig;
-        PlayerData _playerData;
-        TrackController _trackController;
-        TrackInterval _intervalStart;
-        Rigidbody _rb;
-        bool _isReady = false;
-        bool _canMove = false;
-        bool _inputActive = false;
+        private PlayerConfig _playerConfig;
+        private PlayerData _playerData;
+        private TrackController _trackController;
+        private TrackInterval _intervalStart;
+        private LevelController _levelController;
+        private Rigidbody _rb;
+        private Transform _model;
 
-        public void Init(PlayerConfig playerConfig, TrackController currentTrack)
+        private bool _isReady = false;
+        private bool _canMove = false;
+        private bool _inputActive = false;
+
+        public void Init(LevelController levelControler, PlayerConfig playerConfig, TrackController currentTrack)
         {
+            _levelController = levelControler;
             _rb = GetComponent<Rigidbody>();
+            _model = transform.Find("Model");
             _trackController = currentTrack;
             _playerConfig = playerConfig;
             _playerData = new PlayerData();
@@ -37,6 +42,7 @@ namespace GameMechanics
                 Vector3 dir = _intervalStart.Finish.position - _intervalStart.Start.position;
                 Vector3 velocity = dir.normalized * _playerConfig.Speed * Time.deltaTime;
                 transform.Translate(velocity);
+                _model.rotation = Quaternion.Lerp(_model.rotation, Quaternion.LookRotation(dir), _playerData.TimeAccelerated);
 
                 float percent = InverseLerp(_intervalStart.Start.position, _intervalStart.Finish.position, _intervalStart.Start.position + (dir.normalized * distance));
                 if (percent >= 1 && _trackController.IsLastInterval())

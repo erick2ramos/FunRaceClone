@@ -7,6 +7,7 @@ namespace GameMechanics
     {
         public Transform Start { get { return transform; } }
         public Transform Finish { get; set; }
+        public Transform CameraAnchor;
         public bool IsCheckpoint;
     }
 }
