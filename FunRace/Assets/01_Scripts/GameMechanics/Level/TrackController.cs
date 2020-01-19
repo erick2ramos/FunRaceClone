@@ -55,6 +55,10 @@ namespace GameMechanics
         public TrackInterval ResetToCheckpoint()
         {
             _currentTrackPointIndex = _checkpoint;
+            if (_trackPoints[_currentTrackPointIndex].CameraAnchor != null)
+            {
+                _levelController.SetNewCameraAnchor(_trackPoints[_currentTrackPointIndex].CameraAnchor);
+            }
             return _trackPoints[_checkpoint];
         }
 

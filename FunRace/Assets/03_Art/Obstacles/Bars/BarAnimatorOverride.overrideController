@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BarAnimatorOverride
+  m_Controller: {fileID: 9100000, guid: eba7871f381b53b48a5c8a70fca5cd51, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 58329f548c9fedd43ad15698091e6c54, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f39cc2735c258e943b40055d3fa57197, type: 2}

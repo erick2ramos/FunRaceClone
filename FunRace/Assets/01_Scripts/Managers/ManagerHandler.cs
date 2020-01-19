@@ -7,7 +7,7 @@ namespace BaseSystems.Managers {
     public class ManagerHandler : MonoBehaviour
     {
         static Dictionary<Type, Manager> Managers;
-
+        
         public void Init()
         {
             Managers = new Dictionary<Type, Manager>();
@@ -28,7 +28,6 @@ namespace BaseSystems.Managers {
             }
             priorityList.Clear();
 
-            DontDestroyOnLoad(gameObject);
         }
 
         public static void Register(Type managerType, Manager instance)

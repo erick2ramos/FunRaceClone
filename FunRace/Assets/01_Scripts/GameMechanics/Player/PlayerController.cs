@@ -49,6 +49,7 @@ namespace GameMechanics
                 {
                     // win
                     Debug.Log("WIN");
+                    _levelController.ShowWinPopup();
                     _canMove = false;
                 } else if (percent >= 1)
                 {
@@ -80,13 +81,28 @@ namespace GameMechanics
         public void Respawn()
         {
             _canMove = true;
+            _rb.isKinematic = true;
+            _playerData.TimeAccelerated = 0;
+            _trackController.ResetToCheckpoint();
+            _intervalStart = _trackController.GetCurrentTrackPoint();
+            transform.position = _intervalStart.Start.position;
+            transform.rotation = Quaternion.identity;
         }
 
         public void Die()
         {
             _canMove = false;
             _inputActive = false;
+            _rb.isKinematic = false;
             Invoke("Respawn", 1);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Obstacle")
+            {
+                Die();
+            }
         }
     }
 }

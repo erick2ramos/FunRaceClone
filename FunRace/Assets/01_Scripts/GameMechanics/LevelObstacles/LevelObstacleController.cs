@@ -1,16 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelObstacleController : MonoBehaviour
-{
-    [SerializeField]
-    LayerMask _collisionMask;
-
-    private void OnCollisionEnter(Collision collision)
+namespace GameMechanics {
+    public class LevelObstacleController : MonoBehaviour
     {
-        if((collision.transform.gameObject.layer & _collisionMask) > 0)
-        {
-            
-        }
+        // TODO: Control the animator
     }
 }

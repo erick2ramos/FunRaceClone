@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace GameMechanics {
     public class LevelController : MonoBehaviour
@@ -10,6 +11,8 @@ namespace GameMechanics {
         private TrackController _trackController;
         [SerializeField]
         private CameraController _cameraController;
+        [SerializeField]
+        private WinPopup _winPopup;
 
         public void Init(PlayerConfig playerConfig)
         {
@@ -22,7 +25,17 @@ namespace GameMechanics {
         {
             _cameraController.ReAnchor(newAnchor);
         }
+
+        public void ShowWinPopup()
+        {
+            _winPopup.Open(new WinPopupModel()
+            {
+                OnAccept = () =>
+                {
+                    var scene = SceneManager.GetActiveScene();
+                    SceneManager.LoadScene(scene.buildIndex);
+                }
+            });
+        }
     }
-    public class LevelData { }
-    public class LevelObstacles { }
 }

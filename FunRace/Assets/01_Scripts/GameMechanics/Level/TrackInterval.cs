@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace GameMechanics
 {
+    // Path interval for the player to interpolate its position
     public class TrackInterval : MonoBehaviour
     {
         public Transform Start { get { return transform; } }
