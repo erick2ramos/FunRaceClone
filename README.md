@@ -10,3 +10,5 @@ mainly in coding
 competitiveness of the game, also giving a pool of various abilities from where the player can choose and buy can help with
 retention and revenue.
 - Final thoughts, this 5 hour project is a good prototype at least to show and pitch the game's idea.
+
+Clicking/Touching the screen will make the player move along the path
